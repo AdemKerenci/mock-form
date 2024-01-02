@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Running the application
 
-## Getting Started
-
-First, run the development server:
+1) Install dependecies on the root folder:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn
+```
+2) Then build the application:
+```bash
+yarn build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3) Then start the application:
+```bash
+yarn start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the mock form page.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running e2e tests
 
-## Learn More
+1) Go to `e2e` folder.
 
-To learn more about Next.js, take a look at the following resources:
+2) Install the dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+yarn
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2) Run the e2e test after starting the application as described in previous section:
 
-## Deploy on Vercel
+```bash
+yarn playwright test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech stack rationale
+
+### NextJS
+- It is highly popular, opinionated way to bootstrap a react application.
+
+### MaterialUI
+- Rich component library with lots of rooms for customization.
+- Good documentation and ease of usage.
+
+### react-hook-form & yup
+- Very easy to create and validate form flows.
+- Since its(react-hook-form) main target of usage is react, it is highly easy to use it with react.
+
+## Room for improvement
+
+- Most of the config and style are in their basic form for demonstration purpose, to make it truly production ready, each of the setup should be revisited and refit to the requirements.
+
+- Phone number validation did not exist on yup base package. There is another package [yup-phone](https://www.npmjs.com/package/yup-phone) that would enable to make validations as easy as the email one. However, I did not use it because I did not thoroughly check the package. Thus, it is not integratated due to the fact that custom implementation might be sufficient depending on the scale of the functionality demanded from the phone number component.
+
